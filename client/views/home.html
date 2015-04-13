@@ -1,0 +1,39 @@
+<template name="Home">
+    <div id="home-card" class="card">
+      <div id="main-box" class="card-content">
+        <div id="main-button-container">
+          <img class="responsive-img" src="logo.png" />
+          <a id="have-space" class="btn waves-effect waves-light modal-trigger full-width" href="#login">Have Space</a>
+          <a id="need-space" class="btn waves-effect waves-light full-width" href="browse">Need Space</a>
+        </div>
+        <div id="main-video-container">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/AKNtVEt9XHs" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="login" class="modal">
+       <i id="login-close" class="mdi-navigation-close modal-close"></i>
+      <div class="modal-content">
+        <div class="input-field">
+          <i class="mdi-communication-email prefix"></i>
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field">
+          <i class="mdi-communication-vpn-key prefix"></i>
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+        <a id="login-submit" class="btn waves-effect waves-light full-width modal-close">Login / Register</a>
+      </div>
+    </div>
+    
+    <script defer>
+      $(document).ready(function(){
+        $('.modal-trigger').leanModal({dismissible: false});
+      });
+    </script>
+</template>

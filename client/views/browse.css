@@ -1,0 +1,50 @@
+#browse {
+  display: flex;
+  flex: 1;
+}
+#filter {
+  width: 330px;
+  overflow: auto;
+}
+#filter-card {
+  margin: 5px;
+}
+#map {
+  margin-top: 5px;
+  flex: 1;
+}
+#location::-webkit-input-placeholder {
+  color: transparent;
+}
+.row {
+  margin-bottom: 5px !important;
+}
+.range-field {
+  text-align: center;
+}
+.range-input {
+  display: flex;
+  margin-top: 10px;
+}
+.range-icon {
+  font-size: 2rem;
+  margin-right: 14px;
+}
+.range-div {
+  flex: 1;
+}
+.lable-div {
+  text-align: center;
+}
+.type-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cb {
+  margin: 10px 0px;
+  flex: 1;
+}
+.pac-container:after {
+  height: 0px;
+  background: none;
+}

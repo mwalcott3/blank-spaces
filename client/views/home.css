@@ -1,0 +1,34 @@
+/*main-card*/
+#home-card {
+    margin: 10px 20px;
+}
+#main-box {
+    display: flex;
+    align-items: center;
+}
+#main-button-container{
+    flex: 1;
+    margin-right: 20px;
+}
+#have-space{
+    margin-bottom: 10px;
+}
+#main-video-container {
+    flex: 2;
+}
+/*login-modal*/
+#login {
+    width: 350px;
+}
+#login-close {
+    float: right;
+    font-size: 1.3rem;
+    margin: 10px;
+    cursor: pointer;
+}
+#login-close:hover {
+    color: darkred;
+}
+#login-submit {
+    margin-top: 25px;
+}

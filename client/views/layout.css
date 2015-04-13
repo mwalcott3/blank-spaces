@@ -1,0 +1,36 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    color: #444;
+    background-color: #ececec;
+    font-family: 'Helvetica Neue', Helvetica, 'Roboto', Arial, sans-serif;
+}
+#container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#navbar {
+    background-color: #526E9C;
+}
+#nav-content {
+    display: flex;
+}
+#hamburger-menu {
+    margin: 0 10px;
+}
+#brand-logo {
+    font-size: 1.3em;
+    margin: 0 10px;
+}
+#content {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+.full-width {
+    width: 100%;
+}

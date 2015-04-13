@@ -1,0 +1,83 @@
+<template name="Browse">
+  <div id="browse">
+    <div id="filter">
+      <div id="filter-card" class="card">
+        <div id="filter-content" class="card-content">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi-maps-my-location prefix"></i>
+              <input id="location" type="text">
+              <label for="location">Location</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s7">
+              <i class="mdi-action-event prefix"></i>
+              <input id="start" type="text" class="datepicker">
+              <label for="start">From</label>
+            </div>
+            <div class="input-field col s5">
+              <input id="end" type="text" class="datepicker">
+              <label for="end">To</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="range-input col s12">
+              <i class="range-icon mdi-editor-attach-money"></i>
+              <div class="range-div">
+                <div class="lable-div">Max Price</div>
+                <p class="range-field">
+                  <input type="range" id="price-range" min="0" max="100" />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="range-input col s12">
+              <i class="range-icon mdi-maps-local-shipping"></i>
+              <div class="range-div">
+                <div class="lable-div">Min Space</div>
+                <p class="range-field">
+                  <input type="range" id="space-range" min="0" max="100" />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="range-input col s12">
+              <i class="range-icon mdi-image-straighten"></i>
+              <div class="range-div">
+                <div class="lable-div">Max Distance</div>
+                <p class="range-field">
+                  <input type="range" id="distance-range" min="0" max="100" />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="range-input col s12">
+              <i class="range-icon mdi-social-location-city"></i>
+              <div class="range-div">
+                <div class="lable-div">Type</div>
+                <div class="type-div">
+                  <input type="checkbox" class="filled-in" id="attic" />
+                  <label for="attic" class="cb">Attic</label>
+                  <input type="checkbox" class="filled-in" id="closet" />
+                  <label for="closet" class="cb">Closet</label>
+                </div>
+                <div class="type-div">
+                  <input type="checkbox" class="filled-in" id="basement" />
+                  <label for="basement" class="cb">Basement</label>
+                  <input type="checkbox" class="filled-in" id="other" />
+                  <label for="other" class="cb">Other</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="map"></div>
+  </div>
+</template>
