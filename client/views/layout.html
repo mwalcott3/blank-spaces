@@ -1,29 +1,111 @@
 <head>
-  <!JQuery>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <!Materialize>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-  <!Gmaps>
+  <title>Blank Spaces</title>
   <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-  <script src="jquery.geocomplete.js"></script>
+  <script src="/jquery.geocomplete.min.js"></script>
 </head>
 
 <template name="Layout">
   <div id="container">
 
-    <div class="navbar-fixed">
-      <nav id="navbar">
-        <div id="nav-content" class="nav-wrapper">
-          <i id="hamburger-menu" class="mdi-navigation-menu"></i>
-          <div id="brand-logo">Blank-Spaces</div>
-        </div>
-      </nav>
-    </div>
+    <nav>
+      <div class="nav-wrapper teal darken-2">
+        <a href="/" class="brand-logo">Blank-Spaces</a>
+        <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {{> nav}}
+        </ul>
+        <ul class="side-nav" id="mobile-nav">
+          {{> nav}}
+        </ul>
+      </div>
+    </nav>
 
     <div id="content">
       {{> yield}}
     </div>
 
+  </div>
+
+  {{#unless currentUser}} {{> login_res}} {{/unless}}
+
+</template>
+
+<template name="nav">
+  <li><a href="/browse">Browse</a>
+  </li>
+  <li><a href="/about">About</a>
+  </li>
+  <li><a href="/faq">FAQ</a>
+  </li>
+  <li><a href="/contact">Contact us</a>
+  </li>
+  {{#unless currentUser}}
+  <li><a href="#login" class="modal-trigger">Login</a>
+  </li>
+  {{else}}
+  <li><a href="/account" class="modal-trigger">My Account</a>
+  </li>
+  <li><a class="logout" href="/">Logout</a>
+  </li>
+  {{/unless}}
+</template>
+
+<template name="login_res">
+  <div id="login" class="modal log-reg">
+    <i class="mdi-navigation-close modal-close modal-cancel"></i>
+    <div class="modal-content">
+      <form id="login-form" action="action">
+        <div class="input-field">
+          <i class="mdi-communication-email prefix"></i>
+          <input id="uid" type="text">
+          <label for="uid">Email / Username</label>
+        </div>
+        <div class="input-field">
+          <i class="mdi-communication-vpn-key prefix"></i>
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+        <button class="btn waves-effect waves-light modal-submit full-width" type="submit" name="action">
+          <span>Submit</span>
+          <i class="mdi-content-send right"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="register" class="modal log-reg">
+    <i class="mdi-navigation-close modal-close modal-cancel"></i>
+    <div class="modal-content">
+      <form id="register-form" action="action">
+        <div class="input-field">
+          <i class="mdi-social-person prefix"></i>
+          <input id="reg_username" type="text" class="validate">
+          <label for="reg_username">Username</label>
+        </div>
+        <div class="input-field">
+          <i class="mdi-communication-email prefix"></i>
+          <input id="reg_email" type="email" class="validate">
+          <label for="reg_email">Email</label>
+        </div>
+        <div class="input-field">
+          <i class="mdi-action-lock prefix"></i>
+          <input id="reg_password" type="password" class="validate">
+          <label for="reg_password">Password</label>
+        </div>
+        <div class="input-field">
+          <i class="mdi-action-lock prefix"></i>
+          <input id="ver_password" type="password" class="validate">
+          <label for="ver_password">Verify Password</label>
+        </div>
+        <div style="margin-left:5px;margin-top:15px;margin-bottom:5px;">
+          <input id="tos" type="checkbox" class="filled-in" />
+          <label for="tos">I agree to the Terms & Conditions</label>
+        </div>
+        <button class="btn waves-effect waves-light modal-submit full-width" type="submit" name="action">
+          <span>Submit</span>
+          <i class="mdi-content-send right"></i>
+        </button>
+      </form>
+    </div>
   </div>
 </template>

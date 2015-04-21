@@ -1,0 +1,100 @@
+<template name="Listing_Form">
+  <div id="section">
+    <div id="section-card" class="card">
+      <div class="card-content">
+        <form id="listing-form">
+
+          <div class="details" style="display:none;">
+            <input id="lat" name="lat" type="text" value="">
+            <input id="lng" name="lng" type="text" value="">
+            <input id="adress" name="formatted_address" type="text" value="">
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi-maps-place prefix"></i>
+              <input id="location" type="text">
+              <label for="location">Location</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="mdi-action-event prefix"></i>
+              <input id="start" type="text" class="datepicker">
+              <label for="start">Available From</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="end" type="text" class="datepicker">
+              <label for="end">To</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12 flex-box">
+
+              <i class="range-icon mdi-social-location-city"></i>
+              <div class="flex" style="position: relative;">
+                <select id="type">
+                  <option value="other">Other</option>
+                  <option value="attic">Attic</option>
+                  <option value="closet">Closet</option>
+                  <option value="basement">Basement</option>
+                </select>
+                <label style="left: 0px;">Type</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="mdi-image-straighten prefix"></i>
+              <input id="length" type="number">
+              <label for="length">Area Length (ft)</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="width" type="number">
+              <label for="width">Width (ft)</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi-maps-place prefix"></i>
+              <input id="price" type="number">
+              <label for="price">Price ($)</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi-action-label prefix"></i>
+              <input id="title" type="text">
+              <label for="title">Title</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi-editor-mode-edit prefix"></i>
+              <textarea id="description" class="materialize-textarea" length="300"></textarea>
+              <label for="description">Description</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12 flex-box">
+              <i class="mdi-image-camera-alt range-icon" style="margin-top:10px;"></i>
+              <div id="dropzone" class="flex">
+                <div>Add Image</div>
+                <input type="file" accept="image/png, application/pdf" />
+              </div>
+            </div>
+          </div>
+
+          <button id="submit" class="btn waves-effect waves-light full-width" style="margin-bottom: 10px;">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+</template>

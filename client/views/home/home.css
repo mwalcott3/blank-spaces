@@ -1,0 +1,17 @@
+/*main-card*/
+
+#section-card {
+    margin: 10px 10%;
+}
+#main-box {
+    display: flex;
+    align-items: center;
+}
+#main-button-container {
+    flex: 1;
+    max-width: 320px;
+    margin-right: 20px;
+}
+#main-video-container {
+    flex: 2;
+}

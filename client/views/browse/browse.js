@@ -1,5 +1,6 @@
 Template.Browse.rendered = function() {
     //Start datepicker and move it to the body so it isnt blocked by "overflow: hidden"
+    //This causes a memory poblem. It adds things to the body but never gets rid of them unless you refresh
     $('.datepicker').pickadate({
         selectMonths: true,
         selectYears: 5
@@ -42,6 +43,8 @@ Template.Browse.rendered = function() {
     });
     //Update map bounds on zoom or move
     google.maps.event.addListener(map, 'idle', function() {
+        var center = map.getCenter();
+        Session.set("pos", [center.lng(), center.lat()])
         var bounds = map.getBounds();
         if (bounds) {
             var ne = bounds.getNorthEast();
@@ -51,7 +54,8 @@ Template.Browse.rendered = function() {
 
         }
     });
-    //Should change to autosubscribe but autorun works as well. Updates subscription 
+    //Should change to autosubscribe but autorun works as well. Updates subscription
+    //Should get rid of subscription when template is closed/gotten rid of
     Tracker.autorun(function() {
         Meteor.subscribe('nearbyListings', Session.get('bottomLeft'), Session.get('topRight'));
     });
@@ -63,12 +67,61 @@ Template.Browse.rendered = function() {
     //Updates markers when data changes
     //Does not remove markers (only adds them). Will change latter.
     Tracker.autorun(function() {
-        console.log(data.fetch())
+        console.log(data.fetch());
         data.forEach(function(place) {
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(place.lat, place.lng),
                 map: map
             });
+            var temp = '<div class="listing-div"><img class="listing-div-img" src="' + place.image + '"></img><div class="listing-div-top"><div class="listing-div-price">$' + place.price.toString() + '</div><div class="flex"></div></div><div class="listing-div-info"><div class="listing-div-title">' + place.title + '-' + place["length"].toString() + 'x' + place.width.toString() + "'" + '</div><div class="listing-div-adress">' + place.adress + '</div></div></div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: temp
+
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map, marker);
+            });
+
         });
     });
+    // Session.set('price_range', $("#price_range").val());
+    // $("#price_range").change(function(e) {
+    //     Session.set('price_range', $("#price_range").val());
+    // });
+    // Session.set('price_range', $("#area_range").val());
+    // $("#area_range").change(function(e) {
+    //     Session.set('price_range', $("#area_range").val());
+    // });
+    // Session.set('price_range', $("#distance_range").val());
+    // $("#distance_range").change(function(e) {
+    //     Session.set('price_range', $("#distance_range").val());
+    // });
+    // Tracker.autorun(function() {
+    //     var price = Session.get("price_range")
+    //     var area = Session.get("area_range")
+    //     var distance = Session.get("distance_range")
+    //     distance = 1.6 * distance;
+    //     var pos = Session.get("pos")
+    //     data = Listings.find({
+    //         $and: [{
+    //                 price: {
+    //                     $lt: price
+    //                 }
+    //             }, {
+    //                 area: {
+    //                     $gt: area
+    //                 }
+    //             }, {
+    //                 loc: {
+    //                     $near: pos,
+    //                     $maxDistance: distance
+    //                 }
+    //             }
+
+
+    //         ]
+    //     })
+
+
+    // });
 };

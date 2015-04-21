@@ -1,0 +1,94 @@
+#browse {
+  display: flex;
+  flex: 1;
+}
+#filter {
+  width: 330px;
+  overflow: auto;
+}
+#filter-card {
+  margin: 5px;
+}
+#map {
+  margin-top: 5px;
+  flex: 1;
+}
+/* Need to fix for Fiefox and IE*/
+
+#location::-webkit-input-placeholder {
+  color: transparent;
+}
+.range-field {
+  text-align: center;
+}
+.range-input {
+  display: flex;
+  margin-top: 10px;
+}
+.range-icon {
+  font-size: 2rem;
+  margin-right: 14px;
+}
+.range-div {
+  flex: 1;
+}
+.lable-div {
+  text-align: center;
+}
+.type-div {
+  display: flex;
+  flex-direction: column;
+}
+.cb {
+  margin: 10px 0px;
+  flex: 1;
+}
+.pac-container:after {
+  height: 0px;
+  background: none;
+}
+.listing-div {
+  width: 300px;
+  color: rgb(250, 250, 250);
+  position: relative;
+}
+.listing-div-img {
+  width: 300px;
+  object-fit: contain;
+}
+.listing-div-title {
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.listing-div-favorite_button {
+  color: rgb(250, 250, 250);
+}
+.listing-div-favorite_button.favorite {
+  color: rgb(218, 67, 54);
+}
+.listing-div-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.498039);
+}
+.listing-div-price {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.498039);
+}
+.listing-div-top {
+  width: 100%;
+  position: absolute;
+  align-items: center;
+  display: flex;
+  top: 0px;
+  left: 0px;
+}

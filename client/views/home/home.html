@@ -1,0 +1,15 @@
+<template name="Home">
+  <div id="section">
+    <div id="section-card" class="card">
+      <div id="main-box" class="card-content">
+        <div id="main-button-container">
+          <img class="responsive-img" src="logo.png" /> {{#unless currentUser}}
+          <a class="btn waves-effect waves-light full-width modal-trigger" href="#register">Register</a> {{/unless}}
+        </div>
+        <div id="main-video-container" flex>
+          <video id="mainVideo" width="100%" height="auto" src="blank-spaces-intro.mp4" controls></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -7,3 +7,6 @@
 meteor-platform
 insecure
 iron:router
+materialize:materialize
+accounts-base
+accounts-password
