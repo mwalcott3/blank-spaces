@@ -4,3 +4,14 @@
 .indicator {
     background-color: #009688 !important;
 }
+.my-listings{
+    width: 350px;
+    margin: 8px;
+}
+#listing-box{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+
+}

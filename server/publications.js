@@ -10,3 +10,7 @@ Meteor.publish('nearbyListings', function(bottomLeft, topRight) {
     }
   })
 });
+
+Meteor.publish('userListings', function(uid) {
+  return Listings.find({user: uid});
+});

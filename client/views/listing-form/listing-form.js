@@ -95,7 +95,7 @@ Template.Listing_Form.events({
         alert(error)
       }
       else {
-        console.log(result)
+        window.location.href = "/account"
       }
     })
   }

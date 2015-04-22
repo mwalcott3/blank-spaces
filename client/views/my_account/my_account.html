@@ -1,42 +1,63 @@
 <template name="Account">
-  <div id="section">
-    <div id="section-card" class="card">
-      <div class="card-content">
-        <div class="row">
-          <div class="col s12">
-            <ul class="tabs">
-              <li class="tab col s3"><a href="#profile">Profile</a>
-              </li>
-              <li class="tab col s3"><a class="active" href="#favorites">Favorites</a>
-              </li>
-              <li class="tab col s3"><a href="#listings">Listings</a>
-              </li>
-              <li class="tab col s3"><a href="#settings">Settings</a>
-              </li>
-            </ul>
-          </div>
-          <div id="profile" class="col s12">{{> WIP }}</div>
-          <div id="favorites" class="col s12">{{> WIP }}</div>
-          <div id="listings" class="col s12">{{> Listings }}</div>
-          <div id="settings" class="col s12">{{> WIP }}</div>
+    <div id="section">
+        <div class="card section-card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3"><a href="#profile">Profile</a>
+                            </li>
+                            <li class="tab col s3"><a href="#favorites">Favorites</a>
+                            </li>
+                            <li class="tab col s3"><a class="active" href="#listings">Listings</a>
+                            </li>
+                            <li class="tab col s3"><a href="#settings">Settings</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="profile" class="col s12">{{> WIP }}</div>
+                    <div id="favorites" class="col s12">{{> WIP }}</div>
+                    <div id="listings" class="col s12">{{> Listings }}</div>
+                    <div id="settings" class="col s12">{{> WIP }}</div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <template name="WIP">
-  <div class="flex-box center">
-    <h3>Work in progress</h3>
-  </div>
+    <div class="flex-box center">
+        <h3>Work in progress</h3>
+    </div>
 </template>
 
 <template name="Listings">
-  <div class="flex-box center" style="margin-top: 10px;color: rgb(94, 94, 94);">
-    <h4>Manage Listings</h4>
-    <span class="flex"></span>
-    <a class="btn waves-effect waves-light" href="/listing/create">Create New Listing</a>
-  </div>
-  <div class="divider"></div>
+    <div class="flex-box center" style="margin-top: 10px;color: rgb(94, 94, 94);">
+        <h4>Manage Listings</h4>
+        <span class="flex"></span>
+        <a class="btn waves-effect waves-light" href="/listing/create">Create New Listing</a>
+    </div>
+    <div class="divider"></div>
+
+    <div id="listing-box">
+        {{>listingCards}}
+    </div>
 </template>
-  
+
+<template name="listingCards">
+    {{#each listings}}
+        <div class="card blue-grey white-text my-listings">
+            <div class="card-image">
+                <img src="{{image}}">
+                <span class="card-title">{{title}}</span>
+            </div>
+            <div class="card-content">
+                <p>{{description}}</p>
+            </div>
+            <div id="{{_id}}" class="card-action">
+                <a class="editListing">edit</a>
+                <a class="deleteListing">Delete</a>
+            </div>
+        </div>
+    {{/each}}
+</template>
