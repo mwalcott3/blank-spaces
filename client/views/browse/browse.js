@@ -73,7 +73,7 @@ Template.Browse.rendered = function() {
                 position: new google.maps.LatLng(place.lat, place.lng),
                 map: map
             });
-            var temp = '<div class="listing-div"><img class="listing-div-img" src="' + place.image + '"></img><div class="listing-div-top"><div class="listing-div-price">$' + place.price.toString() + '</div><div class="flex"></div></div><div class="listing-div-info"><div class="listing-div-title">' + place.title + '-' + place["length"].toString() + 'x' + place.width.toString() + "'" + '</div><div class="listing-div-adress">' + place.adress + '</div></div></div>';
+            var temp = '<div class="listing-div"><img class="listing-div-img" src="' + place.image + '"></img><div class="listing-div-top"><div class="listing-div-price">$' + place.price.toString() + '</div><div class="flex"></div></div><div class="listing-div-info"><div class="listing-div-title">' + place.title + '-' + place["length"].toString() + 'x' + place.width.toString() + "'" + '</div><div class="listing-div-adress">' + place.adress + '</div></div></div><button class="btn waves-effect waves-light full-width" onclick="alert(\'Not implemented yet\');">Learn More</button>';
             var infowindow = new google.maps.InfoWindow({
                 content: temp
 
