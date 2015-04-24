@@ -59,30 +59,33 @@ Template.Browse.rendered = function() {
     Tracker.autorun(function() {
         Meteor.subscribe('nearbyListings', Session.get('bottomLeft'), Session.get('topRight'));
     });
-    //The Listings collection is bassed of off the subscription from above 
+    //The Listings collection is bassed of off the subscription from above
     //It only contains part of the collection of the same name on the server
     //This is slightly confusing but it works
     //data will latter be used for filtering
     var data = Listings.find();
     //Updates markers when data changes
     //Does not remove markers (only adds them). Will change latter.
-    Tracker.autorun(function() {
-        console.log(data.fetch());
-        data.forEach(function(place) {
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(place.lat, place.lng),
-                map: map
-            });
-            var temp = '<div class="listing-div"><img class="listing-div-img" src="' + place.image + '"></img><div class="listing-div-top"><div class="listing-div-price">$' + place.price.toString() + '</div><div class="flex"></div></div><div class="listing-div-info"><div class="listing-div-title">' + place.title + '-' + place["length"].toString() + 'x' + place.width.toString() + "'" + '</div><div class="listing-div-adress">' + place.adress + '</div></div></div><button class="btn waves-effect waves-light full-width" onclick="alert(\'Not implemented yet\');">Learn More</button>';
-            var infowindow = new google.maps.InfoWindow({
-                content: temp
+    data.observe({
+        added: function(place) {
+            console.log(place);
+            data.forEach(function(place) {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(place.lat, place.lng),
+                    map: map
+                });
+                var temp = '<div class="listing-div"><img class="listing-div-img" src="' + place.image + '"></img><div class="listing-div-top"><div class="listing-div-price">$' + place.price.toString() + '</div><div class="flex"></div></div><div class="listing-div-info"><div class="listing-div-title">' + place.title + '-' + place["length"].toString() + 'x' + place.width.toString() + "'" + '</div><div class="listing-div-adress">' + place.adress + '</div></div></div><button class="btn waves-effect waves-light full-width" onclick="alert(\'Not implemented yet\');">Learn More</button>';
+                var infowindow = new google.maps.InfoWindow({
+                    content: temp
+
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map, marker);
+                });
 
             });
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, marker);
-            });
 
-        });
+        }
     });
     // Session.set('price_range', $("#price_range").val());
     // $("#price_range").change(function(e) {
