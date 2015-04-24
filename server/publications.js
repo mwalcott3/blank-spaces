@@ -8,7 +8,7 @@ Meteor.publish('nearbyListings', function(bottomLeft, topRight) {
         $box: [bottomLeft, topRight]
       }
     }
-  })
+  });
 });
 
 Meteor.publish('userListings', function(uid) {

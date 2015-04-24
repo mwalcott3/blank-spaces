@@ -10,47 +10,68 @@ Template.Listing_Form.rendered = function() {
 
   $("#location").geocomplete({
     details: ".details"
-  })
+  });
   $(function() {
 
-    $('#dropzone').on('dragover', function() {
-      $(this).addClass('hover');
-    });
+      $('#dropzone').on('dragover', function() {
+          $(this).addClass('hover');
+      });
 
-    $('#dropzone').on('dragleave', function() {
-      $(this).removeClass('hover');
-    });
+      $('#dropzone').on('dragleave', function() {
+          $(this).removeClass('hover');
+      });
 
-    $('#dropzone input').on('change', function(e) {
-      var file = this.files[0];
+      $('#dropzone input').on('change', function(e) {
+          var file = this.files[0];
 
-      $('#dropzone').removeClass('hover');
+          $('#dropzone').removeClass('hover');
 
-      if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
-        return alert('File type not allowed.');
-      }
+          if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
+              return alert('File type not allowed.');
+          }
 
-      $('#dropzone').addClass('dropped');
-      $('#dropzone img').remove();
+          $('#dropzone').addClass('dropped');
+          $('#dropzone img').remove();
 
-      if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
-        var reader = new FileReader(file);
+          if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
 
-        reader.readAsDataURL(file);
+              var reader = new FileReader(file);
 
-        reader.onload = function(e) {
-          var data = e.target.result,
-            $img = $('<img />').attr('src', data).fadeIn();
+              reader.readAsDataURL(file);
 
-          $('#dropzone div').html($img);
-        };
-      }
-      else {
-        var ext = file.name.split('.').pop();
+              reader.onload = function(e) {
+                  var data = e.target.result.substr(e.target.result.indexOf(",") + 1, e.target.result.length);
+                  var clientId = "52ade01b2c3c3c5";
 
-        $('#dropzone div').html(ext);
-      }
-    });
+                  $.ajax({
+                      url: "https://api.imgur.com/3/upload",
+                      type: "POST",
+                      datatype: "json",
+                      data: {
+                          image: data
+                      },
+                      success: function(data) {
+                          if (data.success === true) {
+                              var img = $('<img />').attr('src', data.data.link).fadeIn();
+                              $('#dropzone div').html(img);
+                          } else {
+                              alert("Image upload failed");
+                          }
+
+                      },
+                      beforeSend: function(xhr) {
+                          xhr.setRequestHeader("Authorization", "Client-ID " + clientId);
+                      }
+                  });
+
+
+              };
+          } else {
+              var ext = file.name.split('.').pop();
+
+              $('#dropzone div').html(ext);
+          }
+      });
   });
 
 };
@@ -92,11 +113,11 @@ Template.Listing_Form.events({
     };
     Listings.insert(listing, function(error, result) {
       if (error) {
-        alert(error)
+        alert(error);
       }
       else {
-        window.location.href = "/account"
+        window.location.href = "/account";
       }
-    })
+    });
   }
 });
